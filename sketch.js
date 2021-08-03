@@ -1,26 +1,28 @@
-var box;
-function setup() {
-  createCanvas(1600,787);
+
+var ship, ship_running;
+var seaImage;
+function preload() {
+  ship_running = loadAnimation("ship-1.png", "ship-2.png", "ship-3.png","ship-4.png");
+ seaImage = loadImage("sea.png");
 }
+function setup() {
+  createCanvas(1200,750);
 
-function draw() 
-{
+  sea=createSprite(628,259,4000,20);
+  sea.addImage("sea",seaImage);
+  sea.scale=0.3;
 
-  if(keyIsDown(UP_ARROW)){
-   background('pink');
-  }
-  if(keyIsDown(DOWN_ARROW)){
-    background('blue');
-  }
-  if(keyIsDown(LEFT_ARROW)){
-    background('yellow');
-  }
-  if(keyIsDown(RIGHT_ARROW)){
-    background('red');
-  }
+
+ship = createSprite(650,240,20,50);
+ship.addAnimation("running", ship_running);
+ship.scale = 0.3;
+
+
+}
+function draw() {
+background("white");
+sea.velocityX=2;
+
+
 drawSprites();
 }
-
-
-
-
